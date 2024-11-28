@@ -1,4 +1,4 @@
-import { Button, Dropdown, Input, Radio, Select, Space } from "antd";
+import { Button, Dropdown, Input, Radio, Select, Space, message } from "antd";
 import React from "react";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 
@@ -8,24 +8,44 @@ export default ({ customStyle, setStyle }) => {
     var joinStyle = Object.assign(newStyle, { [key]: value });
     setStyle(joinStyle);
   };
+  const changeState = (top, bottom) => {
+    const newObj = { ["topText"]: top, ["bottomText"]: bottom };
+    setStyle(newObj);
+  };
+  const handeButtonClick = (e) => {
+    // e.preventDefault();
+    const { key } = e;
+    if (key === "1") {
+      changeState("S.Etoo", "9");
+    } else if (key === "2") {
+      changeState("Messi", "10");
+    } else if (key === "3") {
+      changeState("D.Maradona", "11");
+    }
+    // message.info(`Click on menu: ${key}`);
+  };
+
   const items = [
     {
-      label: "1st menu item",
+      label: "9 S.Etoo",
       key: 1,
+      onClick: handeButtonClick,
     },
     {
-      label: "2nd menu item",
+      label: "10 L.Messi",
       key: 2,
+      onClick: handeButtonClick,
     },
     {
-      label: "3rd menu item",
+      label: "11 D.Maradona",
       key: 3,
+      onClick: handeButtonClick,
     },
     {
       type: "divider",
     },
     {
-      label: "4rd menu item",
+      label: "10 Ronaldinho",
       key: 4,
       icon: <UserOutlined />,
       danger: true,
@@ -62,6 +82,7 @@ export default ({ customStyle, setStyle }) => {
           <p className="w100">Numéro</p>
           <p>
             <Input
+              disabled
               style={{
                 borderRadius: "8px",
               }}
@@ -77,6 +98,7 @@ export default ({ customStyle, setStyle }) => {
           <p className="w100">Nom</p>
           <p>
             <Input
+              disabled
               style={{
                 borderRadius: "8px",
               }}

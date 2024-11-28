@@ -93,8 +93,6 @@ export default ({
     });
     setError("");
   };
-  // console.log("numberTheme :", themeNumber);
-  // console.log("selectedTab :", selectedTab);
   return (
     <div style={{ display: "flex", alignItems: "flex-start", gap: "20px" }}>
       <div
@@ -275,11 +273,12 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
           }}
           className="font1"
         >
-          {selectedTab !== 1
+          {/* {selectedTab !== 1
             ? customStyle.topText
               ? customStyle.topText
               : "Didier.D"
-            : ""}
+            : ""} */}
+          {customStyle.topText ? customStyle.topText : "Didier.D"}
         </div>
         <div
           style={{

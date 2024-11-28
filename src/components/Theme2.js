@@ -42,7 +42,7 @@ export default ({ customStyle, setStyle }) => {
     >
       <div className="textinputFlex">
         <p className="w100">Selectionez un jouer</p>
-        <Dropdown menu={{ items }} trigger={["click"]}>
+        <Dropdown disabled menu={{ items }} trigger={["click"]}>
           <Button style={{ width: "100%" }}>
             <Space>
               <DownOutlined />

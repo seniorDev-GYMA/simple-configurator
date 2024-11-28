@@ -22,7 +22,6 @@ export default ({ setThemeNumber, themeNumber, addOrder }) => {
     // e.preventDefault();
     const { key } = e;
     setSelectedTheme(Number(key));
-    console.log("event: ", e);
     message.info(`Click on menu: ${key}`);
   };
   const handeSecondButtonClick = (e) => {
@@ -61,16 +60,13 @@ export default ({ setThemeNumber, themeNumber, addOrder }) => {
   ];
 
   const context = useContext(ordersContext);
-  console.log("contextz", context);
 
   const onSubmit = async () => {
     if (!orderFor) {
       setError("OrderFor is required");
       return;
     }
-    console.log("context", context);
     const image = await getImage();
-    console.log("image", image);
     context.addOrder({
       size: "XL",
       image,
