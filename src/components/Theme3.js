@@ -33,9 +33,15 @@ export default ({ customStyle, setStyle }) => {
     },
   ];
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+      }}
+    >
       <div className="textinputFlex">
-        <p className="w100">Selectioner un jouer</p>
+        <p className="w100">Selectionez un jouer</p>
         <Dropdown menu={{ items }} trigger={["click"]}>
           <Button style={{ width: "100%" }}>
             <Space>
@@ -44,11 +50,21 @@ export default ({ customStyle, setStyle }) => {
           </Button>
         </Dropdown>
       </div>
-      <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-        <div className="textinputFlex">
-          <p className="w100">Numero</p>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "20px",
+          width: "100%",
+        }}
+      >
+        <div className="textinputFlex" style={{ width: "30%" }}>
+          <p className="w100">Numéro</p>
           <p>
             <Input
+              style={{
+                borderRadius: "8px",
+              }}
               type="number"
               placeholder="Numero"
               onChange={(event) =>
@@ -57,10 +73,13 @@ export default ({ customStyle, setStyle }) => {
             />
           </p>
         </div>
-        <div className="textinputFlex">
-          <p className="w100">Noms</p>
+        <div className="textinputFlex" style={{ width: "70%" }}>
+          <p className="w100">Nom</p>
           <p>
             <Input
+              style={{
+                borderRadius: "8px",
+              }}
               placeholder="Votre noms"
               onChange={(event) => changeTheme("topText", event.target.value)}
             />

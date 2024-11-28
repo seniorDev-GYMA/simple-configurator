@@ -7,6 +7,7 @@ import { Input, Button, message } from "antd";
 import { ordersContext } from "../context/ordersContext";
 import domtoimage from "dom-to-image";
 import axios from "axios";
+import { useLocation } from "@reach/router";
 
 // const addidaslogo =
 //   "https://www.freepnglogos.com/uploads/adidas-logo-png-black-0.png";
@@ -31,6 +32,15 @@ export default ({
   const [selectedTab, setSelectedTab] = useState(0);
   const [orderFor, setOrderFor] = useState("");
   const [error, setError] = useState("");
+  const location = useLocation();
+
+  const getQueryParams = () => {
+    const params = new URLSearchParams(location.search);
+    return {
+      productId: params.get("product_id"),
+    };
+  };
+  const { productId } = getQueryParams();
 
   const context = useContext(ordersContext);
 
@@ -56,24 +66,23 @@ export default ({
     // }
     // console.log("context", context);
     const productdata = {
-      product_id: 123,
+      product_id: productId,
       quantity: 1,
     };
-    // try {
-    //   const response = await axios.post(
-    //     "https://staging.fif-civ.gyma-agency.com/wp-json/wc/store/cart/add-item",
-    //     productdata,
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: "Token",
-    //       },
-    //     }
-    //   );
-    //   console.log("product added to cart:", response.data);
-    // } catch (error) {
-    //   console.error("error adding product to cart", error);
-    // }
+    try {
+      const response = await axios.post(
+        "https://staging.fif-civ.gyma-agency.com/wp-json/custom/v1/add-to-cart",
+        productdata,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("product added to cart:", response.data);
+    } catch (error) {
+      console.error("error adding product to cart", error);
+    }
 
     const image = await getImage();
     // console.log("image", image);
@@ -99,22 +108,22 @@ export default ({
           <div
             key={index}
             style={{
-              padding: "10px 20px",
+              padding: "20px 30px",
               backgroundColor:
                 selectedTab === index ? "rgba(0, 0, 0, 0.5)" : "transparent",
-              color: "white",
+              color: "transparent",
               cursor: "pointer",
               backgroundImage: `url(${tshirtImages[index]})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              width: "60px",
+              width: "80px",
               height: "100%",
               flex: "1",
               textAlign: "center",
-              borderRadius: "5px",
+              borderRadius: "12px",
               border:
                 selectedTab === index
-                  ? "2px solid lightgreen"
+                  ? "2px solid orange"
                   : "2px solid transparent",
             }}
             onClick={() => setSelectedTab(index)}
@@ -176,9 +185,9 @@ export default ({
         style={{
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "lightgray",
-          padding: "10px",
-          borderRadius: "5px",
+          backgroundColor: "rgba(211, 211, 211, 0.3)",
+          padding: "20px",
+          borderRadius: "10px",
         }}
       >
         <h1
@@ -206,11 +215,12 @@ export default ({
             type="default"
             onClick={onSubmit}
             style={{
-              background: "green",
-              border: "1px solid green",
+              background: "orange",
+              borderRadius: "10px",
               color: "white",
               fontWeight: 400,
-              width: "90%",
+              width: "80%",
+              padding: "20px 20px",
             }}
           >
             Ajouter au panier
@@ -258,6 +268,7 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
             position: "absolute",
             top: 20,
             width: "100%",
+            color: "white",
           }}
           className="font1"
         >
@@ -276,6 +287,7 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
             top: 50,
             width: "100%",
             height: "50px",
+            color: "white",
           }}
           className="font1"
         >
