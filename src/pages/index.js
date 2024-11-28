@@ -27,28 +27,6 @@ const IndexPage = () => {
   const context = React.useContext(ordersContext);
   return (
     <>
-      <div
-        className="navbarStyle"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "10px",
-          backgroundColor: "lightgray",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-          marginBottom: "20px",
-          width: "fit-content",
-          gap: "600px",
-        }}
-      >
-        <Link to={"/"} className="rl">
-          Shirt Design
-        </Link>
-        <Link to={"/orders"} className="rl">
-          Orders
-        </Link>
-      </div>
-
       {/* <button onClick={() => context.addOrder()}>Add Order</button> */}
       <Customization setThemeNumber={null} themeNumber={0} addOrder={null} />
     </>

@@ -188,13 +188,15 @@ export default ({
           backgroundColor: "rgba(211, 211, 211, 0.3)",
           padding: "20px",
           borderRadius: "10px",
+          width: "max-content",
         }}
       >
         <h1
           style={{
-            fontSize: "20px",
+            fontSize: "35px",
             fontWeight: "bold",
             paddingBottom: "10px",
+            letterSpacing: "2px",
           }}
         >
           Personalisez votre maillot
@@ -269,13 +271,14 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
             top: 20,
             width: "100%",
             color: "white",
+            letterSpacing: "2px",
           }}
           className="font1"
         >
           {selectedTab !== 1
             ? customStyle.topText
               ? customStyle.topText
-              : "I Love"
+              : "Didier.D"
             : ""}
         </div>
         <div
