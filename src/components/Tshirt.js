@@ -252,7 +252,7 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
           height: "100%",
           width: 90,
           margin: "auto",
-          marginTop: 40,
+          marginTop: selectedTab === 2 ? "78%" : "60%",
           borderRadius: 5,
           flexDirection: "column",
           textAlign: "center",
@@ -262,33 +262,33 @@ const Theme10verlay = ({ customStyle, setStyle, selectedTab }) => {
         <div
           style={{
             fontWeight: "bold",
-            fontSize: 18,
-            display: "flex",
+            fontSize: 22,
+            // display: "flex",
             justifyContent: "center",
             position: "absolute",
-            top: 20,
-            width: "100%",
+            top: "30%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            // width: "100%",
             color: "white",
-            letterSpacing: "2px",
+            letterSpacing: "2.5px",
           }}
           className="font1"
         >
-          {/* {selectedTab !== 1
+          {selectedTab !== 1
             ? customStyle.topText
               ? customStyle.topText
               : "Didier.D"
-            : ""} */}
-          {customStyle.topText ? customStyle.topText : "Didier.D"}
+            : ""}
+          {/* {customStyle.topText ? customStyle.topText : "Didier.D"} */}
         </div>
         <div
           style={{
             fontWeight: "bold",
-            fontSize: selectedTab === 1 ? 40 : 80,
+            fontSize: selectedTab === 1 ? 40 : 110,
             position: "absolute",
-            marginBottom: 10,
-            top: 50,
+            top: selectedTab === 1 ? 40 : -14,
             width: "100%",
-            height: "50px",
             color: "white",
           }}
           className="font1"
